@@ -1,7 +1,6 @@
-import Vue from "vue";
-import history from "./history";
-
-Vue.component("router-link", {
+import history from "../history";
+export default {
+  name: "RouterLink",
   props: {
     to: {
       type: String,
@@ -10,12 +9,14 @@ Vue.component("router-link", {
   },
   methods: {
     handleClick(e) {
-      if (history.location.pathname === this.to) return;
       history.push(this.to);
     }
   },
-  template: `<a 
+  template: `<a
     :href="to"
     @click.stop.prevent="handleClick"
-    ><slot></slot></a>`
-});
+    >
+      <slot></slot>
+    </a>
+  `
+};

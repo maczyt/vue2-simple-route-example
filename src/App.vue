@@ -8,8 +8,10 @@
 </template>
 
 <script>
+import warning from "warning";
 export default {
-  name: "App"
+  name: "App",
+  created() {}
 };
 </script>
 
