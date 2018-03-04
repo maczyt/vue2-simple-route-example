@@ -16,5 +16,6 @@ Vue.prototype.$router = router;
 new Vue({
   el: "#app",
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
+  router
 });

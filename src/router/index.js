@@ -3,7 +3,15 @@ import Test2 from "../components/Test2";
 const routes = [
   {
     path: "/test1",
-    component: Test1
+    component: Test1,
+    children: [
+      {
+        path: ":id",
+        component: {
+          template: "<h2>sdsd</h2>"
+        }
+      }
+    ]
   },
   {
     path: "/test2",

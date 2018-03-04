@@ -1,4 +1,3 @@
-import history from "../history";
 export default {
   name: "RouterLink",
   props: {
@@ -9,7 +8,7 @@ export default {
   },
   methods: {
     handleClick(e) {
-      history.push(this.to);
+      this.$router.history.push(this.to);
     }
   },
   template: `<a

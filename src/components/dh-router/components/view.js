@@ -1,34 +1,17 @@
-import history from "../history";
-
 export default {
   name: "RouterView",
-  data() {
-    return {
-      unlisten: null,
-      location: this.$router.location
-    };
-  },
-  mounted() {
-    this.unlisten = history.listen((location, actions) => {
-      this.$router.location = this.location = location;
-    });
-  },
-  destroyed() {
-    this.unlisten && this.unlisten();
-  },
-  computed: {
-    ViewComponet() {
-      const router = this.$router;
-      const routes = router.routes;
-      const component = (
-        routes.filter(route => {
-          return route.path === this.location.pathname;
-        })[0] || { component: null }
-      ).component;
-      return component;
-    }
-  },
-  render(h) {
-    return h(this.ViewComponet);
+  functional: true,
+  render(h, { props, parent, children, data }) {
+    const route = parent.$route;
+    const router = parent.$router;
+    let matched = {};
+    console.log(router, route);
+    /*router.routes.forEach(r => {
+      if (r.path === route.pathname) {
+        matched = r;
+      }
+    });*/
+    const component = matched.component;
+    return h(component, data, children);
   }
 };
