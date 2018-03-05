@@ -1,5 +1,8 @@
 <template>
-  <h1>我是Test1啊</h1>
+  <div>
+    <h1>我是Test1啊</h1>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

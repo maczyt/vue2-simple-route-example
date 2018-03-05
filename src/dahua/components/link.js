@@ -8,13 +8,11 @@ export default {
   },
   methods: {
     handleClick(e) {
-      this.$router.history.push(this.to);
+      this.$router.push(this.to, null);
     }
   },
-  template: `<a
-    :href="to"
-    @click.stop.prevent="handleClick"
-    >
+  template: `
+    <a :href="to" @click.stop.prevent="handleClick">
       <slot></slot>
     </a>
   `

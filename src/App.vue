@@ -11,7 +11,9 @@
 import warning from "warning";
 export default {
   name: "App",
-  created() {}
+  created() {
+    // console.log("App", this);
+  }
 };
 </script>
 
