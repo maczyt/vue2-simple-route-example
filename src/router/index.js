@@ -1,14 +1,25 @@
 import Test1 from "../components/Test1";
 import Test2 from "../components/Test2";
+import Router from "@/dahua";
+import Vue from "vue";
+
+Vue.use(Router);
+
 const routes = [
   {
     path: "/test1",
     component: Test1,
     children: [
       {
-        path: ":id",
+        path: "id",
         component: {
           template: "<h2>sdsd</h2>"
+        }
+      },
+      {
+        path: "ids",
+        component: {
+          template: "<h2>ids</h2>"
         }
       }
     ]
@@ -19,4 +30,6 @@ const routes = [
   }
 ];
 
-export default routes;
+export default new Router({
+  routes
+});

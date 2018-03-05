@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <router-link to="/test1">test1</router-link>
-    <router-link to="/test2">test2</router-link>
+    <ol>
+      <li>
+        <router-link to="/test1">test1</router-link>
+      </li>
+      <li>
+        <router-link to="/test2">test2</router-link>
+      </li>
+    </ol>
     <router-view></router-view>
   </div>
 </template>

@@ -28,8 +28,8 @@ export default {
       return h();
     } else {
       const match = matched.get(key);
-      const component = match[depth].component;
-      return h(component, data, children);
+      const component = match[depth] ? match[depth].component : null;
+      return component ? h(component, data, children) : h();
     }
   }
 };

@@ -3,7 +3,7 @@ import Regexp from "path-to-regexp";
 
 export function createMatcher(routes, router) {
   const { pathMap } = createRouteMap(routes);
-  return pathMap;
+  return createRoute(pathMap);
 }
 
 function createRouteMap(routes, oldPathMap) {
@@ -17,6 +17,19 @@ function createRouteMap(routes, oldPathMap) {
   };
 }
 
+function createRoute(pathMap) {
+  for (let key of pathMap.keys()) {
+    const value = pathMap.get(key);
+    let v = value[0];
+    while (!isNotDef(v.parent)) {
+      value.unshift(v.parent);
+      v = v.parent;
+    }
+    pathMap.set(key, value);
+  }
+  return pathMap;
+}
+
 function addRouteRecord(pathMap, matchArr, route, parent) {
   const { path, component } = route;
   const normalizedPath = normalizePath(path, parent);
@@ -26,10 +39,13 @@ function addRouteRecord(pathMap, matchArr, route, parent) {
     component,
     parent
   };
-  isNotDef(route.children) ||
+
+  if (!isNotDef(route.children)) {
     route.children.forEach(child => {
+      const matchArr = [];
       addRouteRecord(pathMap, matchArr, child, record);
     });
+  }
   matchArr.push(record); // depth
 
   if (!pathMap.has(normalizedPath)) {

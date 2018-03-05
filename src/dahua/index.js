@@ -23,6 +23,7 @@ class Dahua {
     }
     this.app = app;
     app._matched = this.matched;
+    console.log(this.matched);
     const history = this.history;
     history.listen(route => {
       this.apps.forEach(app => {
